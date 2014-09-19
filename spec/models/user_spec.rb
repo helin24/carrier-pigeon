@@ -1,7 +1,13 @@
 require 'rails_helper'
 
 describe User do
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:username) }
+  it { should validate_uniqueness_of(:username) }
   it { should validate_presence_of(:email) }
+  it { should validate_uniqueness_of(:email) }
+  it { should validate_presence_of(:password_digest) }
+
   it { should belong_to(:delivery) }
   it { should have_many(:carried_deliveries).class_name('Delivery').with_foreign_key('carrier_id') }
   it { should have_many(:sent_deliveries).class_name('Delivery').with_foreign_key('sender_id') }

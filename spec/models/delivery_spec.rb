@@ -2,6 +2,20 @@ require 'rails_helper'
 
 describe Delivery do
 
+  it { should validate_presence_of(:carrier_id) }
+  it { should validate_presence_of(:sender_id) }
+  it { should validate_presence_of(:recipient_id) }
+  it { should validate_presence_of(:package_size) }
+  it { should validate_presence_of(:from_city) }
+  it { should validate_presence_of(:to_city) }
+  it { should validate_presence_of(:price) }
+  it { should validate_presence_of(:departure_date) }
+
+  it { should validate_numericality_of(:carrier_id) }
+  it { should validate_numericality_of(:sender_id) }
+  it { should validate_numericality_of(:recipient_id) }
+  it { should validate_numericality_of(:price) }
+
   it { should belong_to(:carrier).class_name('User').with_foreign_key('carrier_id') }
   it { should belong_to(:sender).class_name('User').with_foreign_key('sender_id') }
   it { should belong_to(:recipient) }
