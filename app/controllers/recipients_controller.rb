@@ -10,7 +10,10 @@ class RecipientsController < ApplicationController
   end
 
   def create
+    @user = User.find(session[:user_id])
     @recipient = Recipient.create(recipient_params)
+    @user.recipients << @recipient
+    redirect_to @user
   end
 
   def recipient_params
