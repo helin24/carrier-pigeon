@@ -1,6 +1,12 @@
 require 'rails_helper'
 
-describe 'User' do
+describe User do
+  it { should validate_presence_of(:email) }
+  it { should belong_to(:delivery) }
+  it { should have_many(:carried_deliveries).class_name('Delivery').with_foreign_key('carrier_id') }
+  it { should have_many(:sent_deliveries).class_name('Delivery').with_foreign_key('sender_id') }
+  it { should have_many(:recipients) }
+
   before(:each) do
     @user1 = User.create(name: "Clayton", username: "Tester", email: "me@example", password_digest: "password", city: "Chicago")
     @user2 = User.create(name: "Mrs. Adolfo Fadel", username: "rosalee_renner", email: "jaron.mohr@blicklakin.info", password_digest: "password", city: "East Kaden")

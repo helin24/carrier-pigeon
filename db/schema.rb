@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140919144827) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "city"
+    t.integer  "delivery_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
