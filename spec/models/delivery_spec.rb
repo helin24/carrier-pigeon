@@ -1,6 +1,11 @@
 require 'rails_helper'
 
-describe 'Delivery' do
+describe Delivery do
+
+  it { should belong_to(:carrier).class_name('User').with_foreign_key('carrier_id') }
+  it { should belong_to(:sender).class_name('User').with_foreign_key('sender_id') }
+  it { should belong_to(:recipient) }
+
   before(:each) do
     @user1 = User.create(name: "Clayton", username: "Tester", email: "me@example", password_digest: "password", city: "Chicago")
     @user2 = User.create(name: "Mrs. Adolfo Fadel", username: "rosalee_renner", email: "jaron.mohr@blicklakin.info", password_digest: "password", city: "East Kaden")
