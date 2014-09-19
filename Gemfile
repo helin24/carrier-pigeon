@@ -36,8 +36,10 @@ gem 'foundation-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-gem 'rspec-rails'
-
+group :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+end
 
 group :development, :test do
   gem 'capybara', '~> 2.2.1'
