@@ -2,10 +2,10 @@ require 'rails_helper'
 
 feature 'Logout' do
   before :each do
-    User.create!(username:"Tester", password: "pass")
+    User.create!(username:"Tester", password: "pass", email: "test@email.com")
   end
 
-  scenario 'button does not exists for users that are not logged' do
+  scenario 'button does not exist for users that are not logged in' do
     visit root_url
 
     expect(page).to_not have_content("Log Out")
@@ -27,12 +27,23 @@ end
 
 
 feature 'Send a parcel' do
+
+  before :each do
+    User.create!(username:"Tester", password: "pass", email: "test@email.com")
+  end
+
   scenario 'The homepage has a link to all available deliveries' do
     visit root_url
     expect(page).to have_link('Send a Package', href: deliveries_path)
   end
 
   scenario 'clicking the link to send a package takes you to a page with list of deliveries' do
+    visit login_url
+
+    fill_in 'username', with:'Tester'
+    fill_in 'password', with:'pass'
+    click_button 'login'
+
     visit root_url
     click_link 'Send a Package'
 

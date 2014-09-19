@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20140919144827) do
     t.string   "package_size"
     t.string   "from_city"
     t.string   "to_city"
-    t.integer  "price"
-    t.datetime "departure_date"
-    t.datetime "arrival_date"
+    t.decimal  "price"
+    t.date     "departure_date"
+    t.date     "arrival_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
